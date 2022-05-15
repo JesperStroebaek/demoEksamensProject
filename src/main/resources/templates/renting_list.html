@@ -5,29 +5,27 @@
     <title>renting_list</title>
 </head>
 <body>
+
+
 <h1>Table showing a complete list of rentings after running the
 fetchAll method
 </h1>
-<!--
-
-Vi skal have lavet et table med et thymeleaf-for-each-loop inde i.
-som viser vores samlede liste af rentings.
-
-I den her stil-agtigt...
-
- <tbody>
-            <tr th:each="person: ${persons}">
-<td th:text="${person.id}"/>
-<td th:text="${person.first_name}"/>
-<td th:text="${person.last_name}"/>
+<tbody>
+            <tr th:each="renting: ${rentings}">
+<td th:text="${renting.renting_id}"/>
+<td th:text="${renting.customer_id}"/>
+<td th:text="${renting.car_id}"/>
+<td th:text="${renting.start_date}"/>
+<td th:text="${renting.pick_up_location}"/>
+<td th:text="${renting.end_date}"/>
 <td>
-    <a th:href="@{'/car-list/'+${Cars.carId}}">
+    <a th:href="@{'/car-list/'+${Cars.car_id}}">
         <button class="btn-viewOne" id="btn-viewOne">View car</button>
     </a>
-    <a th:href="@{'/delete/'+${cars.id}}">
+    <a th:href="@{'/delete/'+${cars.car_id}}">
         <button class="btn-delete" id="btn-delete">Delete car</button>
     </a>
-    <a th:href="@{'/update/'+${person.id}}">
+    <a th:href="@{'/update/'+${cars.car_id}}">
         <button class="btn-update" id="btn-update">Update car</button>
     </a>
 </td>

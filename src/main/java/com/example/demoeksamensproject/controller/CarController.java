@@ -1,6 +1,6 @@
 package com.example.demoeksamensproject.controller;
 
-import com.example.demoeksamensproject.model.car;
+import com.example.demoeksamensproject.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,17 +19,17 @@ public class CarController {
 
    JdbcTemplate template;
 
-   ArrayList<car> cars = new ArrayList<>();
+   ArrayList<Car> cars = new ArrayList<>();
    @Autowired
    CarRepo carRepo;
 
    @PostMapping("/car_list")
    public String fetchAllCars() {
       String selectCarsFromDatabase = "SELECT * FROM bilabonnement.car";
-      RowMapper<car> carRowMapper = new BeanPropertyRowMapper<>(car.class);
+      RowMapper<Car> carRowMapper = new BeanPropertyRowMapper<>(Car.class);
       System.out.println(template.query(selectCarsFromDatabase, carRowMapper));
 
-      return "redirect:/carList";
+      return "/car_list";
 
       // return template.query(selectCarsFromDatabase, carRowMapper);
 /*

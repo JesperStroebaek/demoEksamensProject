@@ -14,7 +14,7 @@
 </head>
 <body>
 <nav class="main-nav" id="main-nav">
-    <h1 class="logo">Bilabonnement</h1>
+    <h1 class="logo">Bilabonnement.dk</h1>
 
     <ul>
         <li>
@@ -37,27 +37,26 @@
 
     <form action="/confirmedorder" method="POST">
         <div class="input-container">
-            <label for="customer_id">Customer ID</label>
-            <input type="number" min="0" name="customer_id" class="customer_id" id="customer_id"
-                   placeholder="Customer ID" required>
-
-            <label for="pick_up_location">Pick Up Location</label>
-            <input type="text" name="pick_up_location" class="pick_up_location" id="pick_up_location"
-                   placeholder="Pick Up Location" required>
-        </div>
-
-        <div class="input-container">
-            <label for="start_date">Start Date</label>
-            <input type="date" name="start_date" class="start_date" id="start_date" required>
-
-            <label for="end_date">End Date</label>
-            <input type="date" name="end_date" class="end_date" id="end_date" required>
-        </div>
-
+            <label for="customer_id">Registered Customer ID</label>
+            <input type="number" th:name="customer_id" min="0" name="customer_id" class="customer_id" id="customer_id"
+                   placeholder="Registered Customer ID">
+          </div>
         <div class="input-container">
             <label for="car_id">Car Id Number</label>
-            <input type="number" name="car_id" class="car_id" id="car_id" placeholder="car_id" required>
-<!--
+            <input type="number" th:name="car_id" name="car_id" class="car_id" id="car_id" placeholder="car_id" required>
+
+
+            <div class="input-container">
+            <label for="start_date">Start Date</label>
+            <input type="date" th:name="start_date" class="start_date" id="start_date" required>
+            <label for="pick_up_location">Pick Up Location</label>
+            <input type="text" th:name="pick_up_location" class="pick_up_location" id="pick_up_location"
+                   placeholder="Pick Up Location">
+            <label for="end_date">End Date</label>
+            <input type="date" th:name="end_date" class="end_date" id="end_date">
+        </div>
+
+            <!--
             <label for="chassis-number">Chassis Number</label>
             <input type="text" name="chassis_number" class="chassis-number" id="chassis-number"
                    placeholder="Chassis Number" required>   -->

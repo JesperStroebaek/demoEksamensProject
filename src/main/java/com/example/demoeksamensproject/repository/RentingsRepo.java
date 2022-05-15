@@ -1,5 +1,6 @@
 package com.example.demoeksamensproject.repository;
 
+import com.example.demoeksamensproject.model.Car;
 import com.example.demoeksamensproject.model.Customer;
 import com.example.demoeksamensproject.model.Rentings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,20 @@ import java.util.List;
 public class RentingsRepo {
     @Autowired
     JdbcTemplate template;
+    @Autowired
+    CustomerRepo customerRepo;
 
-    Customer customer = new Customer();
 
-    public void confirmOrder(Rentings renting) {
-
+    public void confirmedOrder(Rentings rentings) {
+        Customer customer = new Customer();
+        Car car = new Car();
         String updateQuery = "INSERT INTO bilabonnement.renting"  +
                 " (renting_id,customer_id,car_id,start_date, pick_up_place, end_date)" +
-                " VALUES (?,?,?,?,?,?)";
-        template.update(updateQuery, renting.getRentingId(), customer.getCustomerId(),renting.getStartDate(),
-                renting.getPickUpPlace(), renting.getEndDate());
-        System.out.println(template.update(updateQuery, renting.getRentingId()
-                , renting.getStartDate(), renting.getPickUpPlace(), renting.getEndDate()));
+                " VALUES (?,?,?,?,?,?);";
+        template.update(updateQuery, rentings.getRentingId(), customer.getCustomerId(),car.getCarId(),rentings.getStartDate(),
+                rentings.getPickUpLocation(), rentings.getEndDate());
+        System.out.println(template.update(updateQuery, rentings.getRentingId()
+                , rentings.getStartDate(), rentings.getPickUpLocation(), rentings.getEndDate()));
     }
 
 

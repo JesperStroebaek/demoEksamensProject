@@ -1,15 +1,16 @@
 package com.example.demoeksamensproject.model;
 
-public class car
-{  private int carId = 3;
+public class Car
+{
+    private int carId;
     private String brand;
     private String model;
     private String licensePlateNumber;
     private String chassisNumber;
 
-    public car() {}
+    public Car() {}
 
-    public car(int carId,String brand,String model, String licensePlateNumber, String chassisNumber)
+    public Car(int carId, String brand, String model, String licensePlateNumber, String chassisNumber)
     { this.carId = carId;
         this.brand = brand;
         this.model = model;

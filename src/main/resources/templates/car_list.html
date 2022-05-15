@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>renting_list</title>
+</head>
+<body>
+
+
+<h1>Table showing a complete list of rentings after running the
+    fetchAll method
+</h1>
+<tbody>
+<tr th:each="car: ${cars}">
+    <td th:text="${cars.car_id}"/>
+    <td th:text="${cars.brand}"/>
+    <td th:text="${cars.car_model}"/>
+    <td th:text="${cars.license_plate}"/>
+    <td th:text="${cars.chassis_number}"/>
+    <td>
+        <a th:href="@{'/car-list/'+${cars.car_id}}">
+            <button class="btn-viewOne" id="btn-viewOne">View car</button>
+        </a>
+        <a th:href="@{'/delete/'+${cars.car_id}}">
+            <button class="btn-delete" id="btn-delete">Delete car</button>
+        </a>
+        <a th:href="@{'/update/'+${cars.car_id}}">
+            <button class="btn-update" id="btn-update">Update car</button>
+        </a>
+    </td>
+</tr>
+</tbody>
+
+
+</body>
+</html>

@@ -27,15 +27,15 @@ public class RentingsController
     RentingService rentingservice = new RentingService();
 
     @GetMapping("/confirmedorder")
-    public String confirmOrder()
+    public String confirmedOrder()
     {
         return "/confirmedorder";
     }
 
     @PostMapping("/confirmedorder")
-    public String confirmOrder(@ModelAttribute Rentings rentings)
+    public String confirmedOrder(@ModelAttribute Rentings rentings)
     {
-        rentingservice.confirmOrder(rentings);
+        rentingservice.confirmedOrder(rentings);
         return "/confirmedorder";
     }
 
