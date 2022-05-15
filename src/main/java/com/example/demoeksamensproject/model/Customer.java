@@ -13,9 +13,7 @@ public class Customer
 
     public Customer() {}
 
-    public void carConstructor(int customerId,String firstName,String lastName,
-           int age, int phoneNumber,String email, String address, int dateOfBirth)
-    {
+    public Customer(int customerId, String firstName, String lastName, int age, String email, int phoneNumber, String address, int dateOfBirth) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,6 +24,7 @@ public class Customer
         this.dateOfBirth = dateOfBirth;
     }
 
+   
     public int getCustomerId() {
         return customerId;
     }

@@ -15,15 +15,17 @@ public class RentingsRepo {
     @Autowired
     JdbcTemplate template;
 
+    Customer customer = new Customer();
 
-    public void confirmOrder(Rentings rentings) {
-        String updateQuery = "INSERT INTO bilabonnement.renting" +
+    public void confirmOrder(Rentings renting) {
+
+        String updateQuery = "INSERT INTO bilabonnement.renting"  +
                 " (renting_id,customer_id,car_id,start_date, pick_up_place, end_date)" +
                 " VALUES (?,?,?,?,?,?)";
-        template.update(updateQuery, rentings.getRentingId(), rentings.getStartDate(),
-                rentings.getPickUpPlace(), rentings.getEndDate());
-        System.out.println(template.update(updateQuery, rentings.getRentingId()
-                , rentings.getStartDate(), rentings.getPickUpPlace(), rentings.getEndDate()));
+        template.update(updateQuery, renting.getRentingId(), customer.getCustomerId(),renting.getStartDate(),
+                renting.getPickUpPlace(), renting.getEndDate());
+        System.out.println(template.update(updateQuery, renting.getRentingId()
+                , renting.getStartDate(), renting.getPickUpPlace(), renting.getEndDate()));
     }
 
 
