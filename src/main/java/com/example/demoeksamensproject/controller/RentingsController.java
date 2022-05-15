@@ -24,11 +24,16 @@ public class RentingsController
     RentingService rentingService;
     @Autowired
     RentingsRepo rentingsRepo;
+    Rentings rentings = new Rentings();
     RentingService rentingservice = new RentingService();
 
     @GetMapping("/confirmedorder")
-    public String confirmedOrder()
+    public String confirmedOrder(Model model)
     {
+        model.addAttribute("renting_id",rentings.getRentingId());
+        model.addAttribute("customer_id", rentings.getCustomerId());
+        model.addAttribute("car_id", rentings.getCarId());
+
         return "/confirmedorder";
     }
 
@@ -47,19 +52,19 @@ public class RentingsController
     @GetMapping("/renting_list")
     public String rentingList(Model model){
         List<Rentings> rentingsList = rentingService.fetchAllRentings();
-        model.addAttribute("rentings", rentingsList);
+        model.addAttribute("renting", rentingsList);
         return "/renting_list";
     }
 
     @PostMapping("/renting_list/{customer_id}")
     public List<Rentings> fetchAllRentings()
     {
-        String fetchRentings = "SELECT * FROM bilabonnement.renting;";
+        String sqlStatement = "SELECT * FROM bilabonnement.renting;";
         RowMapper<Rentings> rentingRowMapper = new BeanPropertyRowMapper<>(Rentings.class);
 
-        System.out.println(template.update(fetchRentings, rentingRowMapper));
+        System.out.println(template.update(sqlStatement, rentingRowMapper));
 
-        return template.query(fetchRentings, rentingRowMapper);
+        return template.query(sqlStatement, rentingRowMapper);
     }
 
 

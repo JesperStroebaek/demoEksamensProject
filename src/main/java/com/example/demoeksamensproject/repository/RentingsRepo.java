@@ -19,16 +19,16 @@ public class RentingsRepo {
     CustomerRepo customerRepo;
 
 
-    public void confirmedOrder(Rentings rentings) {
+    public void confirmedOrder(Rentings renting) {
         Customer customer = new Customer();
         Car car = new Car();
         String updateQuery = "INSERT INTO bilabonnement.renting"  +
                 " (renting_id,customer_id,car_id,start_date, pick_up_place, end_date)" +
                 " VALUES (?,?,?,?,?,?);";
-        template.update(updateQuery, rentings.getRentingId(), customer.getCustomerId(),car.getCarId(),rentings.getStartDate(),
-                rentings.getPickUpLocation(), rentings.getEndDate());
-        System.out.println(template.update(updateQuery, rentings.getRentingId()
-                , rentings.getStartDate(), rentings.getPickUpLocation(), rentings.getEndDate()));
+        template.update(updateQuery, renting.getRentingId(), customer.getCustomerId(),car.getCarId(),renting.getStartDate(),
+                renting.getPickUpLocation(), renting.getEndDate());
+        System.out.println(template.update(updateQuery, renting.getRentingId()
+                , renting.getStartDate(), renting.getPickUpLocation(), renting.getEndDate()));
     }
 
 

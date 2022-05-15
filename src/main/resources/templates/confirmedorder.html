@@ -16,7 +16,7 @@
 <nav class="main-nav" id="main-nav">
     <h1 class="logo">Bilabonnement</h1>
 </nav>
-<form action="/confirmedorder" method="POST">
+<form action="/confirmedorder" method="post">
     <div class="container bill-container">
         <div class="container bill-container">
             <header class="header">
@@ -32,28 +32,28 @@
                         <h2>Customer ID</h2>
                         <span th:text="${renting.customer_id}" name="customer_id" class="output customer-id-output" id="customer-id-output">Customer ID</span>
                     </div>
-
                     <div>
-                        <h2>Pick Up Location</h2>
-                        <span th:text="${renting.pick_up_location}" class="output pickup-location-output" id="pickup-location-output">Pick Up Location</span>
+                        <h2>Car Number</h2>
+                        <span th:text="${renting.car_id}" class="output car-number-output" id="car-number-output">Car Number</span>
                     </div>
+
 
                     <div>
                         <h2>Start Date</h2>
                         <span th:text="${renting.start_date}" class="output start-date-output" id="start-date-output">Start Date</span>
                     </div>
                 </div>
-
+                <div>
+                    <h2>Pick Up Location</h2>
+                    <span th:text="${renting.pick_up_location}" class="output pickup-location-output" id="pickup-location-output">Pick Up Location</span>
+                </div>
                 <div>
                     <div>
                         <h2>End Date</h2>
                         <span th:text="${renting.end_date}" class="output end-date-output" id="end-date-output">End Date</span>
                     </div>
 
-                    <div>
-                        <h2>Car Number</h2>
-                        <span th:text="${renting.car_id}" class="output car-number-output" id="car-number-output">Car Number</span>
-                    </div>
+
 
              <!--       <div>
                         <h2>Chassis Number</h2>
