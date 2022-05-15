@@ -11,8 +11,9 @@ public class Rentings
     {
     }
 
-    public Rentings(String startDate, String pickUpPlace, String endDate)
+    public Rentings(int rentingId, String startDate, String pickUpPlace, String endDate)
     {
+        this.rentingId = rentingId;
         this.startDate = startDate;
         this.pickUpPlace = pickUpPlace;
         this.endDate = endDate;

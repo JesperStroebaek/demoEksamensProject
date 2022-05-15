@@ -1,22 +1,18 @@
 package com.example.demoeksamensproject.controller;
 
-import com.example.demoeksamensproject.model.Car;
-import com.example.demoeksamensproject.model.Customer;
 import com.example.demoeksamensproject.model.Rentings;
-import com.zaxxer.hikari.pool.HikariProxyResultSet;
+import com.example.demoeksamensproject.repository.RentingsRepo;
+import com.example.demoeksamensproject.service.RentingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,25 +20,35 @@ public class RentingsController
 {
     @Autowired
     JdbcTemplate template;
+    @Autowired
+    RentingService rentingService;
+    @Autowired
+    RentingsRepo rentingsRepo;
+    RentingService rentingservice = new RentingService();
 
-    List<Rentings> rentings = new ArrayList<>();
-
-    Rentings r = new Rentings();
-    Customer c = new Customer();
-    Car car = new Car();
-
-    @PostMapping("/checkoutbill")
-    public String confirmRenting(Rentings r)
+    @GetMapping("/confirmedorder")
+    public String confirmOrder()
     {
-        /*String updateQuery = "INSERT INTO bilabonnement.renting" +
-                " (renting_id,customer_id,car_id,start_date, pick_up_place, end_date)" +
-                " VALUES (?,?,?,?,?,?)";
-        todo getters til de rigtige parametre
-        // (r.getRentingId(),r.getStartDate(),r.getPickUpPlace(),r.getEndDate())
-        template.update(updateQuery, r.getRentingId(), r.getStartDate(), r.getPickUpPlace(), r.getEndDate());
+        return "/confirmedorder";
+    }
 
-        System.out.println(template.update(updateQuery));*/
-        return "/checkoutbill";
+    @PostMapping("/confirmedorder")
+    public String confirmOrder(@ModelAttribute Rentings rentings)
+    {
+        rentingservice.confirmOrder(rentings);
+        return "/confirmedorder";
+    }
+
+
+
+
+
+
+    @GetMapping("/renting_list")
+    public String rentingList(Model model){
+        List<Rentings> rentingsList = rentingService.fetchAllRentings();
+        model.addAttribute("rentings", rentingsList);
+        return "/renting_list";
     }
 
     @PostMapping("/renting_list/{customer_id}")
@@ -56,10 +62,6 @@ public class RentingsController
         return template.query(fetchRentings, rentingRowMapper);
     }
 
-    @PostMapping("/confirmedorder")
-    public String confirmedOrder()
-    {
-        return "/confirmedorder";
-    }
+
 }
 

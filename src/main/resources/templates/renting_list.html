@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>renting_list</title>
+</head>
+<body>
+<h1>Table showing a complete list of rentings after running the
+fetchAll method
+</h1>
+<!--
+
+Vi skal have lavet et table med et thymeleaf-for-each-loop inde i.
+som viser vores samlede liste af rentings.
+
+I den her stil-agtigt...
+
+ <tbody>
+            <tr th:each="person: ${persons}">
+<td th:text="${person.id}"/>
+<td th:text="${person.first_name}"/>
+<td th:text="${person.last_name}"/>
+<td>
+    <a th:href="@{'/car-list/'+${Cars.carId}}">
+        <button class="btn-viewOne" id="btn-viewOne">View car</button>
+    </a>
+    <a th:href="@{'/delete/'+${cars.id}}">
+        <button class="btn-delete" id="btn-delete">Delete car</button>
+    </a>
+    <a th:href="@{'/update/'+${person.id}}">
+        <button class="btn-update" id="btn-update">Update car</button>
+    </a>
+</td>
+</tr>
+</tbody>
+
+-->
+
+</body>
+</html>

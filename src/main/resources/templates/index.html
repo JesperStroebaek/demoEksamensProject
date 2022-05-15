@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -35,32 +35,32 @@
 <!-- Section: Create Rental -->
 <section class="create-rental content show" id="create-rental">
 
-    <form action="/checkoutbill" method="POST">
+    <form action="/confirmedorder" method="POST">
         <div class="input-container">
-            <label for="customer-id">Customer ID</label>
-            <input type="number" min="0" name="customer_id" class="customer-id" id="customer-id"
+            <label for="customer_id">Customer ID</label>
+            <input type="number" min="0" name="customer_id" class="customer_id" id="customer_id"
                    placeholder="Customer ID" required>
 
-            <label for="pick-up-location">Pick Up Location</label>
-            <input type="text" name="pick_up_location" class="pick-up-location" id="pick-up-location"
+            <label for="pick_up_location">Pick Up Location</label>
+            <input type="text" name="pick_up_location" class="pick_up_location" id="pick_up_location"
                    placeholder="Pick Up Location" required>
         </div>
 
         <div class="input-container">
-            <label for="start-date">Start Date</label>
-            <input type="date" name="start_date" class="start-date" id="start-date" required>
+            <label for="start_date">Start Date</label>
+            <input type="date" name="start_date" class="start_date" id="start_date" required>
 
-            <label for="end-date">End Date</label>
-            <input type="date" name="end_date" class="end-date" id="end-date" required>
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date" class="end_date" id="end_date" required>
         </div>
 
         <div class="input-container">
-            <label for="car-number">Car Number</label>
-            <input type="number" name="car_number" class="car-number" id="car-number" placeholder="Car Number" required>
-
+            <label for="car_id">Car Id Number</label>
+            <input type="number" name="car_id" class="car_id" id="car_id" placeholder="car_id" required>
+<!--
             <label for="chassis-number">Chassis Number</label>
             <input type="text" name="chassis_number" class="chassis-number" id="chassis-number"
-                   placeholder="Chassis Number" required>
+                   placeholder="Chassis Number" required>   -->
         </div>
 
 
